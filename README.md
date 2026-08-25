@@ -229,30 +229,7 @@ User:
 
 ---
 
-## Step 4 — Interests
-
-AI:
-
-> What kind of experiences are you interested in?
-
-Possible options:
-
-- Nature
-- History
-- Culture
-- Food
-- Shopping
-- Adventure
-- Temples
-- Nightlife
-
-User:
-
-> Nature, history and food
-
----
-
-## Step 5 — Budget
+## Step 4 — Budget
 
 AI:
 
@@ -264,7 +241,7 @@ User:
 
 ---
 
-## Step 6 — Transportation
+## Step 5 — Transportation
 
 AI:
 
@@ -284,25 +261,7 @@ User:
 
 ---
 
-## Step 7 — Travel Style
-
-AI:
-
-> What pace do you prefer?
-
-Possible options:
-
-- Relaxed
-- Balanced
-- Fast-paced
-
-User:
-
-> Relaxed
-
----
-
-## Step 8 — Discover Places
+## Step 6 — Discover Places
 
 The Destination Agent searches for suitable attractions.
 
@@ -360,9 +319,7 @@ The Itinerary Agent creates a plan based on:
 - Distance
 - Travel time
 - Opening hours
-- User interests
 - Budget
-- Travel style
 
 Example:
 
@@ -565,10 +522,8 @@ Collect the information required to plan the trip.
 destination
 number_of_days
 number_of_travelers
-interests
 budget
 transportation_preference
-travel_style
 ```
 
 ### Important rule
@@ -589,9 +544,7 @@ Find relevant places in the selected destination.
 
 ```text
 destination
-interests
 number_of_days
-travel_style
 ```
 
 ### Outputs
@@ -622,7 +575,6 @@ It should consider:
 - Travel time
 - Opening hours
 - Number of days
-- Travel style
 - Budget
 - Meal breaks
 - Rest time
@@ -700,7 +652,7 @@ Responsible for finding places.
 Example:
 
 ```python
-search_places(destination, interests)
+search_places(destination)
 ```
 
 ---
@@ -960,12 +912,10 @@ class TripState(TypedDict, total=False):
     number_of_days: int
     number_of_travelers: int
 
-    interests: list[str]
     budget: float
     currency: str
 
     transportation_preference: str
-    travel_style: str
 
     available_places: list
     selected_places: list
@@ -1566,7 +1516,6 @@ Example:
 Bengaluru
 3 days
 2 travelers
-Nature + history
 ₹15,000
 ```
 
@@ -1591,9 +1540,7 @@ Please provide the city and country.
 ## No Places Found
 
 ```text
-I couldn't find suitable places based on your preferences.
-
-Would you like to broaden your interests?
+I couldn't find suitable places in that destination.
 ```
 
 ---
